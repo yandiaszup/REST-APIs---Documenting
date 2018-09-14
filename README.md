@@ -26,7 +26,7 @@ Generated documentation access URLs:
    
    JSON form: http://localhost:8080/v2/api-docs 
    
-Swagger Core annotations:
+Swagger Core annotations: https://github.com/swagger-api/swagger-core/wiki/Annotations
 	
 	@Api(description : "API Resource Description")
 	@ApiOperation(value = "API Operation Description")
