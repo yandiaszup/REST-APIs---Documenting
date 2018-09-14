@@ -40,6 +40,6 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 "URL dos termos de serviço",
                 new Contact("John Doe", "www.example.com", "myeaddress@company.com"),
                 "License of API", "API license URL", Collections.emptyList());
+
     }
-    
 }
