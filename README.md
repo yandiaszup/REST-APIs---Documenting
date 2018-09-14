@@ -23,4 +23,13 @@ Dependencies:
 Generated documentation access URLs: 
    
    Swagger UI form: http://localhost:8080/swagger-ui.html
+   
    JSON form: http://localhost:8080/v2/api-docs 
+   
+Swagger Core annotations:
+	
+	@Api(description : "API Resource Description")
+	@ApiOperation(value = "API Operation Description")
+	@ApiModel(description = "Description for the model(Objetcs, Responses, Requests, Entities)")
+	@ApiModelProperty(notes = "Description for the atribute(variable)")
+	
