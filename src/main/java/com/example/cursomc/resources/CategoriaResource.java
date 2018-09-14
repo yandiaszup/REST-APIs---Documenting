@@ -62,7 +62,7 @@ public class CategoriaResource {
         return ResponseEntity.noContent().build();
     }
 
-    @ApiOperation(value = "Retorna todas as categorias.", response = Categoria.class)
+    @ApiOperation(value = "Retorna todas as categorias.", response = Categoria.class) // response -> Objeto de resposta
     @RequestMapping(method=RequestMethod.GET)
     public ResponseEntity<?> findall(){
         List<Categoria> lista = service.findall();
