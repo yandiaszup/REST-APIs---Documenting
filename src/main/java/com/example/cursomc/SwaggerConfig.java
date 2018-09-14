@@ -34,21 +34,12 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "My REST API",
-                "Some custom description of API.",
-                "API TOS",
-                "Terms of service",
+                "Titulo do codumento",
+                "Descrição.",
+                "Versão",
+                "URL dos termos de serviço",
                 new Contact("John Doe", "www.example.com", "myeaddress@company.com"),
                 "License of API", "API license URL", Collections.emptyList());
     }
-
-
-    @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
-
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
+    
 }
