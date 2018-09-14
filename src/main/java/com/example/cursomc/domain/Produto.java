@@ -3,19 +3,25 @@ package com.example.cursomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 
 @Entity
+@ApiModel(description = "Objeto que representa o produto.")
 public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "ID do produto",required = true)
     private Integer id;
+    @ApiModelProperty(notes = "Nome",required = true)
     private String nome;
+    @ApiModelProperty(notes = "Preço",required = true)
     private double preco;
 
     @JsonIgnore  
@@ -24,6 +30,7 @@ public class Produto implements Serializable {
         joinColumns = @JoinColumn(name = "produto_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
+    @ApiModelProperty(notes = "Lista de categorias do produto.",required = true)
     private List<Categoria> categorias = new ArrayList<>(); // Um produto pode ter varias categorias
 
     @JsonIgnore

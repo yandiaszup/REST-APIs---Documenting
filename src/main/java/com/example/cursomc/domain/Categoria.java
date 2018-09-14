@@ -2,6 +2,8 @@ package com.example.cursomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,14 +12,19 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity // criacao do tipo entidade
+@ApiModel(description = "Objeto que representa uma categoria")
 public class Categoria{
 
     @Id // chave primaria e id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "ID.", required = true)
     private Integer id;
+
+    @ApiModelProperty(notes = "Nome da categoria.", required = true)
     private String nome;
 
     @ManyToMany(mappedBy = "categorias")
+    @ApiModelProperty(notes = "Lista de produtos da categoria.")
     private List<Produto> produtos = new ArrayList<>(); // Uma categoria de varios produtos
 
     public Categoria(){

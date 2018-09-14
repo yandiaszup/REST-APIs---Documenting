@@ -21,26 +21,20 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value="/categorias")
-@Api(value="onlinestore", description="Operations pertaining to products in Online Store")
+@Api(description="EndPoint que representa as categorias")
 public class CategoriaResource {
 
     @Autowired
     private CategoriaServices service;
 
+    @ApiOperation(value = "Retorna uma categoria pelo id.",response = Categoria.class)
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id){
         Categoria obj = service.find(id);
         return ResponseEntity.ok().body(obj);
     }
 
-    @ApiOperation(value = "View a list of available products",response = Iterable.class)
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully retrieved list"),
-            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
-    }
-    )
+    @ApiOperation(value = "Insere uma nova categoria.",response = Categoria.class)
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> insert(@Valid @RequestBody CategoriaDTO objDTO){
         Categoria obj = service.fromDTO(objDTO);
@@ -51,6 +45,7 @@ public class CategoriaResource {
 
     }
 
+    @ApiOperation(value = "Atualiza uma categoria pelo id.")
     @RequestMapping(value="/{id}",method = RequestMethod.PUT)
     public ResponseEntity<Void> update(@Valid @RequestBody CategoriaDTO objDTO, @PathVariable Integer id){
         Categoria obj = service.fromDTO(objDTO);
@@ -60,12 +55,14 @@ public class CategoriaResource {
 
     }
 
+    @ApiOperation(value = "Deleta uma categoria pelo id.")
     @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
 
+    @ApiOperation(value = "Retorna todas as categorias.", response = Categoria.class)
     @RequestMapping(method=RequestMethod.GET)
     public ResponseEntity<?> findall(){
         List<Categoria> lista = service.findall();
